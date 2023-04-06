@@ -2,7 +2,7 @@ import {loadFile} from '../function.js'
 
 function main(){
 
-  const lines = loadFile('../teste/bc_1009.txt').split('\r\n') //<----
+  const lines = loadFile('teste/bc_1009.txt').split('\r\n') //<----
   
   let nome_vendedor = lines[0]
   let salario_fixo = Number(lines[1])

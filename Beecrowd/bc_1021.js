@@ -2,7 +2,7 @@ import {loadFile} from '../function.js'
 
 function main(){
 
-  const lines = loadFile('../teste/bc_1021.txt').split('\r\n').map(Number) //<----
+  const lines = loadFile('teste/bc_1021.txt').split('\r\n').map(Number) //<----
 
   let valor = lines[0]
   let notas100 = Math.floor(valor / 100);

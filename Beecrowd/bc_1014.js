@@ -1,7 +1,7 @@
 import {loadFile} from '../function.js'
 
 function main() {
-  const lines = loadFile('../teste/bc_1014.txt').split('\r\n').map(Number)
+  const lines = loadFile('teste/bc_1014.txt').split('\r\n').map(Number)
 
   let dis_total = lines[0]
   let comb_total = lines[1]

@@ -2,7 +2,7 @@ import {loadFile} from '../function.js'
 
 function main(){
 
-  const lines = loadFile('../teste/bc_1010.txt').split('\r\n') //<----
+  const lines = loadFile('teste/bc_1010.txt').split('\r\n') //<----
   
   let peca1 = lines[0].split(' ').map(Number)
   let peca2 = lines[1].split(' ').map(Number)

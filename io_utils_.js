@@ -1,6 +1,6 @@
 import { question } from "readline-sync";
 
-export function input_num(cont){
+export function input_num(cont='Insira um numero'){
     let num = input(cont)
 
     while (isNaN(Number(num)) || num === ''){
@@ -29,3 +29,16 @@ export function input(cont){
 export function print(cont){
     return console.log(cont)
 }
+
+export function cabecalho(txt='###'){
+    print('-----------------------------------------------------------------\n')
+    print(`############### ${txt} ###############`)
+  }
+
+export function rodape() {
+  print('\n-----------------------------------------------------------------')
+}
+
+
+
+

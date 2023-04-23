@@ -1,37 +1,14 @@
-import { question } from "readline-sync";
+import { cabecalho, print, rodape } from "../../../io_utils_.js"
 
 /* */
 
 function main() {
-  cabecalho('')
+  cabecalho()
 
   print()
   
   rodape()
 }
 
-
-
-
-//Funções de Apoio
-function input(cont) {
-  const input = Number(question(cont))
-
-  return input
-}
-function print(cont) {
-  const print = console.log(cont)
-
-  return print
-}
-
-function cabecalho(txt){
-  print('-----------------------------------------------------------------\n')
-  print(`############### ${txt} ###############`)
-}
-
-function rodape() {
-  print('\n-----------------------------------------------------------------')
-}
 
 main()

@@ -31,6 +31,26 @@ export function input_num_numa_faixa(cont, inicio, final){
 
     return num
 }
+export function input_num_maior_que(cont, minimo){
+    let num = input_num(cont)
+
+    while (num < minimo){
+        print(`Por favor insira um número maior que ${minimo}!!`)
+        num = input_num(cont)
+    }
+
+    return num
+}
+export function input_num_menor_que(cont, maximo){
+    let num = input_num(cont)
+
+    while (num > maximo){
+        print(`Por favor insira um número maior que ${maximo}!!`)
+        num = input_num(cont)
+    }
+
+    return num
+}
 
 export function input(cont){
     return question(cont)

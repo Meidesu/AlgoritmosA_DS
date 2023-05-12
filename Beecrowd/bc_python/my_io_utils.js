@@ -15,13 +15,29 @@ export function to_char(codigo) {
 }
 
 export function eh_maiuscula(caractere) {
-  const cod =  ord(caractere)
+  const cod =  to_code(caractere)
  
   return cod >= 65 && cod <= 90
 }
 
 export function eh_minuscula(caractere) {
-  const cod =  ord(caractere)
+  const cod =  to_code(caractere)
  
   return cod >= 97 && cod <= 122
+}
+
+export function my_map(lista, fun){
+  let nova_lista = []
+
+  for (let item of lista){
+    nova_lista.push(fun(item))
+  }
+
+  return nova_lista
+}
+
+export function to_Number(str){
+  if ( str != undefined ){
+    return Number(str)
+  } 
 }

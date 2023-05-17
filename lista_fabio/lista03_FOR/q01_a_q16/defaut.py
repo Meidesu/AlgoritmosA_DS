@@ -1,5 +1,5 @@
 from sys import path
-path.append('..//..//..//')
+path.append('..//..//')
 from io_utils import cabecalho, rodape
 
 #

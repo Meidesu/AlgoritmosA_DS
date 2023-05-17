@@ -23,7 +23,7 @@ export function eh_par(num){
 }
 
 export function eh_multiplo(numero, candidato){
-  return candidato % numero == 0
+  return candidato % numero == 0 || numero % candidato == 0
 }
 
 export function media_de_n_numeros(quantidade){

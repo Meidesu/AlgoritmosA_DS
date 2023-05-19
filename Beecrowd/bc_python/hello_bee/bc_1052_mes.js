@@ -1,4 +1,4 @@
-import { import_files } from '../my_io_utils.js'
+import { import_files } from '../my_strings_utils.js'
 
 function main(){
 

@@ -1,4 +1,4 @@
-import { import_files, my_map } from '../my_io_utils.js'
+import { import_files, my_map } from '../my_strings_utils.js'
 
 function main() {
   const lines = my_map(import_files('teste/bc_1060.txt'), Number)

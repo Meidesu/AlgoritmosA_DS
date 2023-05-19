@@ -1,5 +1,5 @@
 import { ordenar_valores } from '../math_utils.js'
-import { import_files, my_map} from '../my_io_utils.js'
+import { import_files, my_map} from '../my_strings_utils.js'
 
 
 function main() {

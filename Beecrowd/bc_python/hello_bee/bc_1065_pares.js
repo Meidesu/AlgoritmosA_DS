@@ -1,4 +1,4 @@
-import { import_files, my_map } from '../my_io_utils.js'
+import { import_files, my_map } from '../my_strings_utils.js'
 import { eh_par } from '../math_utils.js'
 
 function main() {

@@ -50,6 +50,19 @@ export function maior_de_n_numeros(qnt){
   return maior
 }
 
+export function menor_de_n_numeros(lista){
+  // const tamanho = lista.length 
+  let menor = lista[0]
+
+  for ( let elemento of lista ){
+    if( elemento < menor ){
+      menor = elemento
+    }
+  }
+
+  return menor
+}
+
 export function ordenar_valores(lista){
   const len = lista.length
   let lista_ordenada = lista

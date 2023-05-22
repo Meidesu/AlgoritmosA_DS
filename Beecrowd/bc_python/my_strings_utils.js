@@ -3,7 +3,7 @@ import {readFileSync} from 'fs'
 export function import_files(path) {
   const dados = readFileSync(path, 'utf-8')
  
-  return dados.split('\n') 
+  return dados.trim().split('\r\n')
 }
 
 export function to_code(caractere) {
@@ -40,4 +40,12 @@ export function to_Number(str){
   if ( str != undefined ){
     return Number(str)
   } 
+}
+
+// export function eh_numero(char){
+//   return to_code(char) >= 48 && to_code(char) <= 57
+// }
+
+export function eh_numero(char){
+  return char.charCodeAt() >= 48 && char.charCodeAt() <= 57
 }

@@ -69,6 +69,34 @@ export function rodape() {
   print('\n-----------------------------------------------------------------')
 }
 
+// export function input_data( cont='Digite uma data (DD/MM/AAAA): ') {
+//     let data = input(cont).split('/')
 
+//     print(data)
+//     let [ dia, mes, ano ] = data
+
+//     while ( dia_invalido(dia) || mes_invalido(mes) || ano_invalido(ano)){
+//         print('Data invalida, favor digite no modelo DD/MM/AAAA.')
+//         [dia, mes, ano] = input(cont).split('/')
+
+//     //    = data
+//     //     print('dia',dia)
+//     //     print(mes)
+//     //     print(ano)
+//     }
+
+//     return data
+// } 
+
+// function dia_invalido(dia) {
+
+//     return dia < 1 || dia > 31 || dia == undefined
+// }
+// function mes_invalido(mes) {
+//     return mes < 1 || mes > 12 || mes == undefined
+// }
+// function ano_invalido(ano) {
+//     return ano < 1 || ano == undefined
+// }
 
 

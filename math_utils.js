@@ -1,4 +1,4 @@
-import { input_num_positivo } from "./io_utils_.js"
+import { input_num_positivo, print } from "./io_utils_.js"
 
 export function eh_primo(num){
   let contador = num
@@ -49,3 +49,8 @@ export function maior_de_n_numeros(qnt){
   }
   return maior
 }
+
+export function raiz(raiz, valor) {
+  return valor ** (1/raiz)
+}
+

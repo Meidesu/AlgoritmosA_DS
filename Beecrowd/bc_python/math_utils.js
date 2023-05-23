@@ -80,3 +80,7 @@ export function ordenar_valores(lista){
   }
   return lista_ordenada
 }
+
+export function raiz(raiz, valor) {
+  return valor ** (1/raiz)
+}

@@ -1,4 +1,6 @@
-
+import {readFileSync} from 'fs'
+import { print } from './io_utils_.js'
+    
 export function import_files(path) {
   const dados = readFileSync(path, 'utf-8')
  
@@ -140,5 +142,37 @@ export function numero_por_extenso(char){
   return num_extenso
 }
 
+export function my_split(str, char_quebra=' '){
+  let partes = []
+  let nova_str = ''
+  
+  for ( let i = 0; i < len(str); i++){
+    
+    if ( str[i] == char_quebra ){
+      partes.push(nova_str)
+      nova_str = ''
+      
+    } else {
+      nova_str += str[i]
+    }
+  }
+    
+  partes.push(nova_str)
+  return partes
+}
 
-// console.log(numero_por_extenso('123'))
+export function my_join(lista, separador=' '){
+  let nova_str = ''
+
+  for ( let i in lista ){
+    if ( i == 0 ){
+      nova_str += lista[i]
+
+    } else {
+      nova_str += separador + lista[i]
+
+    }
+  }
+
+  return nova_str
+}

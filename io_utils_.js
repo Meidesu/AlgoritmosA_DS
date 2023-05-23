@@ -69,6 +69,43 @@ export function rodape() {
   print('\n-----------------------------------------------------------------')
 }
 
+export function input_str_tam_minimo(label, minimo=0){
+    let txt = input(label)
+
+    while ( txt.length < minimo ){
+        print(`Tamanho inválido, digite um texto com no minimo ${minimo} de tamanho.`)
+
+        txt = input(label)
+    }
+
+    return txt
+}
+
+export function input_str_tam_maximo(label, maximo=Infinity){
+    let txt = input(label)
+
+    while ( txt.length > maximo ){
+        print(`Tamanho inválido, digite um texto com no maximo ${maximo} de tamanho.`)
+
+        txt = input(label)
+    }
+
+    return txt
+}
+
+export function input_str_numa_faixa(label, inicio=0, final=Infinity){
+    let txt = input(label)
+
+    while (txt.length < inicio || txt.length > final){
+        print(`Tamanho inválido, digite um texto com tamanho entre ${inicio} e ${final}`)
+        txt = input(label)
+    }
+
+    return txt
+}
+
+
+
 // export function input_data( cont='Digite uma data (DD/MM/AAAA): ') {
 //     let data = input(cont).split('/')
 

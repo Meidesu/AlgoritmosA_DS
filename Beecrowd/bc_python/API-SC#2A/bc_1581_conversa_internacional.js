@@ -10,16 +10,17 @@ function main() {
     if ( eh_numero(lines[linha]) ){
       let idiomas_iguais = true
       let num_pessoas = Number(lines[linha])
+      const idioma_atual = linha + 1
       
       for( let idioma = 1; idioma < num_pessoas; idioma++ ){
-          const idioma_atual = idioma + linha
-          const idioma_posterior = idioma_atual + 1
+          const idioma_anterior = idioma + linha
+          const idioma_posterior = idioma_anterior + 1
 
           idiomas_iguais = lines[idioma_atual] == lines[idioma_posterior]
       }
       
       if(idiomas_iguais){
-        console.log(lines[linha+1])
+        console.log(lines[idioma_atual])
       } else {
         console.log('ingles')
       }

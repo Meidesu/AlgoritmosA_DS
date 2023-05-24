@@ -146,18 +146,25 @@ export function my_split(str, char_quebra=' '){
   let partes = []
   let nova_str = ''
   
-  for ( let i = 0; i < len(str); i++){
-    
-    if ( str[i] == char_quebra ){
-      partes.push(nova_str)
-      nova_str = ''
-      
-    } else {
-      nova_str += str[i]
+  if( char_quebra == '' ){
+    for( let char of str ){
+      partes.push(char)
+
     }
-  }
+  } else {
+    for ( let i = 0; i < len(str); i++){
     
-  partes.push(nova_str)
+      if ( str[i] == char_quebra ){
+        partes.push(nova_str)
+        nova_str = ''
+        
+      } else {
+        nova_str += str[i]
+      }
+    }      
+    partes.push(nova_str)
+  }
+
   return partes
 }
 

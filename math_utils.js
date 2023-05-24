@@ -50,6 +50,24 @@ export function maior_de_n_numeros(qnt){
   return maior
 }
 
+export function ordenar_valores(lista){
+  const len = lista.length
+  let lista_ordenada = lista
+  
+  for ( let volta = 0; volta < len; volta++ ){
+    for(let i = 0; i < len; i++){
+      if( lista[i] <= lista[1+i] ){
+        const intermediario = lista_ordenada[i]
+        lista_ordenada[i] = lista_ordenada[i+1]
+
+        lista_ordenada[i+1] = intermediario
+        // console.log(lista_ordenada)
+      }
+    }
+  }
+  return lista_ordenada
+}
+
 export function raiz(raiz, valor) {
   return valor ** (1/raiz)
 }

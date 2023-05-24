@@ -104,6 +104,19 @@ export function input_str_numa_faixa(label, inicio=0, final=Infinity){
     return txt
 }
 
+export function input_binario(label='Digite um numero binario: ') {
+    let num = input_str_tam_minimo(label, 1)
+  
+    for ( let alg of num ){
+      if (alg !== '0' && alg !== '1' ){
+        print('Numero inválido!!')
+        return input_binario(label)
+      }
+    }
+  
+    return num
+  }
+
 
 
 // export function input_data( cont='Digite uma data (DD/MM/AAAA): ') {

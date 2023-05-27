@@ -3,7 +3,7 @@ import {readFileSync} from 'fs'
 export function import_files(path) {
   const dados = readFileSync(path, 'utf-8')
  
-  return dados.trim().split('\r\n')
+  return dados.trim().split('\n')
 }
 
 export function to_code(caractere) {

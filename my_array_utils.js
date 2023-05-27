@@ -12,8 +12,8 @@ export function new_array_padrao(tamanho, padrao=0) {
   return new_array
 }
 
-export function new_array(){
-  const tamanho = input_num_positivo('Informe o tamanho da lista: ')
+export function new_array(label='Informe o tamanho da lista: '){
+  const tamanho = input_num_positivo(label)
   let lista = new_array_padrao(tamanho)
 
   for ( let i in lista ){

@@ -179,3 +179,13 @@ export function my_join(lista, separador=' '){
 
   return nova_str
 }
+
+function pertence_a(candidato, lista){
+  for ( let item of lista ){
+    if( candidato == item ){
+      return true
+    }
+  }
+
+  return false
+}

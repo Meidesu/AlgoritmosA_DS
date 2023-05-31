@@ -23,6 +23,16 @@ export function new_array(label='Informe o tamanho da lista: '){
   return lista
 }
 
+export function new_array_aleatorio(tamanho, min=0, max=101){
+  let lista = new_array_padrao(tamanho)
+  
+  for ( let i in lista ){
+     lista[i] = Math.floor(Math.random() * (max - min) + min)
+  }  
+
+  return lista
+}
+
 export function len(lista) {
   let contador = 0
 

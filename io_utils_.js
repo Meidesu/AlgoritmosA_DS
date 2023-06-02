@@ -56,11 +56,16 @@ export function input(cont){
     return question(cont)
 }
 
+export function input_secreto(cont='', char_troca='*'){
+    return question(cont, {hideEchoBack: true, mask: char_troca});
+}
+
 export function print(cont){
     return console.log(cont)
 }
 
 export function cabecalho(txt='###'){
+    console.clear()
     print('-----------------------------------------------------------------\n')
     print(`############### ${txt} ###############\n`)
   }

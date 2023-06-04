@@ -45,7 +45,7 @@ export function input_num_menor_que(cont, maximo){
     let num = input_num(cont)
 
     while (num > maximo){
-        print(`Por favor insira um número maior que ${maximo}!!`)
+        print(`Por favor insira um número menor que ${maximo}!!`)
         num = input_num(cont)
     }
 
@@ -155,3 +155,7 @@ export function input_binario(label='Digite um numero binario: ') {
 // }
 
 
+export function limpar_tela() {
+    input_secreto('\n<Enter>', ' ')
+    console.clear()
+  }

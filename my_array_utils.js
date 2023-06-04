@@ -1,5 +1,5 @@
 import { eh_numero } from "./my_strings_utils.js"
-import { input, input_num_positivo   } from "./io_utils_.js"
+import { input, input_num_positivo, print   } from "./io_utils_.js"
 
 export function new_array_padrao(tamanho, padrao=0) {
   let new_array = new Array(tamanho)
@@ -108,7 +108,7 @@ export function to_number(num) {
 
 }
 
-function pertence_a(candidato, lista){
+export function pertence_a(candidato, lista){
   for ( let item of lista ){
     if( candidato == item ){
       return true
@@ -117,3 +117,23 @@ function pertence_a(candidato, lista){
 
   return false
 }
+
+export function my_push(item, lista) {
+  const tamanho = len(lista) + 1
+  let nova_lista = new_array_padrao(tamanho)
+
+  for ( let i in nova_lista ){
+
+    if ( i == len(lista)){
+      nova_lista[i] = item
+
+    } else {
+      nova_lista[i] = lista[i]
+
+    }
+  }
+
+  return nova_lista
+}
+
+// print(my_push(5, [1, 2, 3, 4]))

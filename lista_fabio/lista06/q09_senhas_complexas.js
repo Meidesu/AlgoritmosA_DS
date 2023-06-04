@@ -1,5 +1,11 @@
-import { cabecalho, input, input_secreto, rodape, print, input_num} from "../../io_utils_.js";
-
+import {
+  cabecalho,
+  input,
+  input_secreto,
+  rodape,
+  print,
+  input_num
+} from '../../io_utils_.js'
 
 function main() {
   cabecalho()
@@ -12,7 +18,6 @@ function main() {
   let senhas = []
 
   while (opcao !== 0) {
-    
     switch (opcao) {
       case 1:
         print('\nCadastrar novo usuário: ')
@@ -20,55 +25,48 @@ function main() {
         const usuario = input('Insira um nome de usuário: ')
         const senha = input_senha_valida('Insira uma senha: ')
         const confirmacao = input_senha_valida('\nConfirme a senha: ')
-        
+
         if (senha !== confirmacao) {
           print('\nAs senhas são diferentes!!')
-          
         } else {
           usuarios.push(usuario)
           senhas.push(senha)
 
           print('\nTudo ok!!')
-
         }
 
-        break;
-        
-      case 2:
-        if ( senhas.length == 0){
-          print('\nNenhum usuario cadastrado')
+        break
 
+      case 2:
+        if (senhas.length == 0) {
+          print('\nNenhum usuario cadastrado')
         } else {
           print('\nInsira suas informações de login: ')
 
           const usuario = input('\nUsuario: ')
           const indice_usuario = procurar_usuario(usuario, usuarios)
 
-          if ( indice_usuario != undefined){
+          if (indice_usuario != undefined) {
             const input_senha = input_senha_valida('Senha: ')
 
-            if (senha_valida(senhas, input_senha, indice_usuario)){
+            if (senha_valida(senhas, input_senha, indice_usuario)) {
               print(`Bem-vindo ${usuario}`)
-
             } else {
-
               print(`Senha inválida!!`)
             }
-
           } else {
             print('Usuário não encontrado!!')
-
           }
         }
 
-        break;
+        break
 
       default:
         print('Escolha uma opção válida!')
 
-        break;
+        break
     }
-    
+
     limpar_tela()
     menu()
     opcao = input_num(' >> ')
@@ -78,7 +76,7 @@ function main() {
   rodape()
 }
 
-function menu(){
+function menu() {
   print(`
   Escolha uma opção:
   1 - cadastrar usuário;
@@ -87,33 +85,29 @@ function menu(){
   `)
 }
 
-function input_senha_valida(cont='"Digite a senha: "'){
+function input_senha_valida(cont = '"Digite a senha: "') {
   let senha = input_secreto(cont)
 
-  while ( senha == '' || senha == ' ') {
-    print('Isira uma senha válida!!')
+  while (senha == '' || senha == ' ') {
+    print('Insira uma senha válida!!')
     senha = input_secreto(cont)
   }
 
   return senha
 }
 
-function limpar_tela(){
-
+function limpar_tela() {
   input_secreto('\n<Enter>', ' ')
   console.clear()
 }
 
 function senha_valida(senhas, senha, indice_usuario) {
-
   return senha == senhas[indice_usuario]
 }
 
-function procurar_usuario(usuario, usuarios){
-  for ( let i in usuarios ){
-
-    if ( usuarios[i] == usuario ){
-      
+function procurar_usuario(usuario, usuarios) {
+  for (let i in usuarios) {
+    if (usuarios[i] == usuario) {
       return i
     }
   }

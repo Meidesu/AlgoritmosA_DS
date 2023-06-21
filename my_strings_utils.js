@@ -4,7 +4,7 @@ import { print } from './io_utils_.js'
 export function import_files(path) {
   const dados = readFileSync(path, 'utf-8')
  
-  return dados.split('\n') 
+  return dados.split('\r\n') 
 }
 
 export function to_code(caractere) {

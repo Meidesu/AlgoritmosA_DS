@@ -12,10 +12,11 @@ export function cabecalho_rifa(disponivel) {
   Diga o que deseja:
   1 - Definir valores de referencia;
   2 - Verificar valores de referencia e status;
-  3 - Visualizar pontos da rifa; (melhorar apresentação)
-  4 - Realizar sorteio; (está repetindo)
+  3 - Visualizar pontos da rifa; 
+  4 - Realizar sorteio;
+  5 - Resetar;
   0 - sair
-  `, 10)
+  `)
 }
 
 export function inicializar_pontos() {
@@ -44,10 +45,13 @@ export function inicializar_pontos() {
   return [pontos, vendidos, disponivel]
 }
 
-export function mostrar_rifa_completa(pontos){
+export function mostrar_rifa_completa(pontos, premio){
   const num_disponiveis = []
 
   console.clear()
+
+  print(`\n------------------ Lista de participantes ------------------`)
+  print(`\n  Prêmio atual: R$${premio}\n`)
 
   for ( let linha of pontos ){
     const num = linha['num']
@@ -68,18 +72,23 @@ export function mostrar_rifa_completa(pontos){
 export function realizar_sorteio(pontos ,qtd_sorteios){
   let contador = 0
   const ganhadores = []
+  const sorteados = []
 
   while ( contador < qtd_sorteios ) {
     const num_sorteado = gerar_aleatorio(pontos.length + 1, 1)
 
-    for ( let linha of pontos ){
-      const num = linha['num']
-      const nome = linha['nome']
+    if ( !pertence_a(num_sorteado, sorteados) ){
 
-      if ( num === num_sorteado && nome !== ''){
-          ganhadores.push(linha)
-          contador++
-
+      for ( let linha of pontos ){
+        const num = linha['num']
+        const nome = linha['nome']
+  
+        if ( num === num_sorteado && nome !== ''){
+            ganhadores.push(linha)
+            contador++
+            
+            sorteados.push(num_sorteado)
+        }
       }
     }
   } 
@@ -94,28 +103,34 @@ function gerar_aleatorio(max, min) {
 export function mostrar_ganhadores(ganhadores){
   
   if ( ganhadores.length === 1 ){
-    print('\n  Ganhador da vez: ')
-    print( `  ${ganhadores[0]['num']}: ${ganhadores[0]['nome']}` )
+    // print('\n  Ganhador da vez: ')
+    // print( `  ${ganhadores[0]['num']}: ${ganhadores[0]['nome']}` )
 
     print(`
   Ganhador da vez:
+
   ${ganhadores[0]['num']}: ${ganhadores[0]['nome']}  
 
   Parabéns ao ganhador!!
     `)
     
-
   } else {
-    print('\n  Lista de ganhadores: ')
+    print('\n  Lista de ganhadores: \n')
 
     for ( let ganhador of ganhadores ){
       print( `  ${ganhador['num']}: ${ganhador['nome']}` )
     }
 
-    print('  Parabens aos ganhadores!!')
+    print('\n  Parabens aos ganhadores!!')
+  }
+}
+
+function pertence_a(candidato, lista){
+  for ( let item of lista ){
+    if( candidato == item ){
+      return true
+    }
   }
 
-  
-
-  
+  return false
 }

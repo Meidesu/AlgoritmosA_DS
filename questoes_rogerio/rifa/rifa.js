@@ -45,14 +45,14 @@ function main() {
         print(`  Preço do ponto.........: R$${valor_ponto.toFixed(2)}`)  
         print(`  Valor arrecadado.......: R$${valor_arrecadado.toFixed(2)}`)  
         print(`  Taxa de administração..: ${taxa_adm*100}%`)  
-        print(`  Valor liquido..........: R$${valor_liquido.toFixed(2)}`)  
+        print(`  Valor liquido..........: R$${valor_liquido.toFixed(2)}\n`)  
         
-        print(`  Valor liquido..........: sorteio realizado?`)  
+        print(`  Status do sorteio......: ${ sorteio_realizado ? 'Já feito' : 'Não feito'}`)  
         break;
     
       case 3:
         
-        mostrar_rifa_completa(pontos)
+        mostrar_rifa_completa(pontos, valor_liquido)
 
         break;
     
@@ -71,11 +71,22 @@ function main() {
 
           sorteio_realizado = true
         }
+        break;
+
+      case 5:
+        valor_ponto = 1.5
+        taxa_adm = 0.1
+        valor_arrecadado = 0
+        valor_liquido = 0
+        ganhadores = [] 
+        sorteio_realizado = false
+
+        print('\n  Padrões restaurados com sucesso!!')
 
         break;
     
       default:
-        print('Escolha uma opção válida!!')
+        print('\n  Escolha uma opção válida!!')
         break;
     }
     
@@ -85,10 +96,6 @@ function main() {
     opcao = input_num('  >> ')
 
   }
-
-
-  // menu()
-
 }
 
 main()

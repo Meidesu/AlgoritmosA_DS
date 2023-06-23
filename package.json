@@ -5,10 +5,12 @@
   "license": "MIT",
   "type": "module",
   "dependencies": {
+    "chalk": "^5.2.0",
     "print-js": "^1.6.0",
     "prompt-sync": "^4.2.0",
     "python": "^0.0.4",
-    "readline-sync": "^1.4.10"
+    "readline-sync": "^1.4.10",
+    "ulidx": "^2.0.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

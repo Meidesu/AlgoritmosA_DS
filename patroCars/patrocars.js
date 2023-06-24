@@ -1,77 +1,59 @@
-import chalk from 'chalk'
-import { input, print } from '../io_utils_.js';
-import { atualizar_montadora, 
-         criar_nova_montadora, 
-         inicializar_montadoras, 
-         listar_itens_montadora, 
-         remover_montadora, 
-         salvar_dados,} from "./patrocars_features.js";
-import { menu } from './patrocars_menu.js'
-import { limpar_tela } from "./patrocars_utils.js";
+import { print } from '../io_utils_.js';
+import { inicializar_montadoras, 
+         salvar_dados,
+         } from "./patrocars_features.js";
+import { menu, 
+         menu_montadoras } from './patrocars_menu.js'
+import { fundo_branco, 
+         limpar_tela, 
+         texto_amarelo, 
+         texto_vermelho } from "./patrocars_utils.js";
 
 
 function main() {
   console.clear()
 
-  // print('‖⁜※▣▦▬▨▩◊◦◜◝◞◟')
-
-  //Variaveis "globais"
   let montadoras = inicializar_montadoras()
 
-  let opcao = menu(opcoes_menu)
+  let opcao = menu(opcoes_main_menu)
 
   while (opcao !== 0) {
-
     switch (opcao) {
       case 1:
-        criar_nova_montadora(montadoras)
+        menu_montadoras(montadoras)  
 
-        break
+        break;
       case 2:
-        listar_itens_montadora(montadoras)
-
-
-        
-        break
+        // print('Coming soon')
+        break;
       case 3:
-        atualizar_montadora(montadoras)
-        
-        salvar_dados(montadoras)
-        break
-      case 4:
-        remover_montadora(montadoras)
-
-        salvar_dados(montadoras)
-        break
-
+        // print('Coming soon')
+          
+        break;
+    
       default:
-        print(` ${chalk.redBright('Escolha uma opção válida!!')}`)
-        break
+        print(` ${texto_vermelho('Escolha uma opção válida!!')}`)
+
+        break;
     }
-
-    limpar_tela()
-
-    opcao = menu(opcoes_menu)
+    
+    // limpar_tela()
+  
+    opcao = menu(opcoes_main_menu)
 
   }
-  // print(montadoras)
 
-  // input()
   salvar_dados(montadoras)
 }
 
-const opcoes_menu = ` 
+const opcoes_main_menu = 
+`${fundo_branco('\n\t\t Patro Cars ')}
 
-\t  ${chalk.bgWhite.black(' Patro Cars ')}
-
-  Possuimos n montadoras até o momento
-
-  1 - Adicionar nova montadora;
-  2 - Listar montadoras;
-  3 - Atualizar montadora;
-  4 - Remover montadora;
-  0 - sair.
-  `
+  1: Montadoras;
+  2: Modelos;
+  3: Veiculos;
+  ${texto_amarelo('0: Sair.')}
+`
 
 main()
 

@@ -1,10 +1,36 @@
 import { ulid } from "ulidx";
-import { input_num, input_num_positivo, input_str_tam_minimo, print } from "../io_utils_.js";
-// import { import_files } from "../my_strings_utils.js";
+
 import fs from "fs";
-import { del, import_files, limpar_tela } from "./patrocars_utils.js";
+
+import { input_num, 
+         input_num_positivo, 
+         input_str_tam_minimo, 
+         print } from "../io_utils_.js";
+
+import { del, fundo_branco, 
+         import_files, 
+         limpar_tela, 
+         texto_amarelo, 
+         texto_verde, 
+         texto_vermelho } from "./patrocars_utils.js";
+
 import { menu } from "./patrocars_menu.js";
-import chalk from "chalk";
+
+export function listar_montadoras(montadoras, label) {
+  console.clear()
+
+  let menu_montadoras = 
+`${fundo_branco(`\n\t\t ${label} \n`)}\n`
+
+  for ( let i = 0; i < montadoras.length; i++ ){
+    menu_montadoras += `  ${i+1}: ${montadoras[i]['nome']}\n`
+
+  }
+
+  menu_montadoras += texto_amarelo('  0: Voltar\n')
+
+  return menu_montadoras
+}
 
 export function inicializar_montadoras() {
   const linhas = import_files('montadoras.txt')
@@ -18,13 +44,16 @@ export function inicializar_montadoras() {
     montadoras.push({'id': carac[0],
                    'nome': carac[1], 
                    'pais': carac[2], 
-                   'ano': carac[3]})
+                    'ano': carac[3]})
   }
 
   return montadoras
 }
 
 export function criar_nova_montadora(montadoras){
+  console.clear()
+
+  print(fundo_branco('\n\t\t Cadastrar montadora \n'))
 
   const id = ulid()
   const nome = input_str_tam_minimo('  Nome da montadora: ', 1).trim()
@@ -32,12 +61,23 @@ export function criar_nova_montadora(montadoras){
   const ano = input_num_positivo('  Ano de fundacao: ')
 
   montadoras.push({id, nome, pais, ano})
+
+  print(texto_verde('\n  Montadora cadastrada com sucesso!!'))
+
+  limpar_tela()
 }
 
 export function listar_itens_montadora(montadoras) {
   console.clear()
 
-  print(`\n\t  ${chalk.bgWhite.black((' Montadoras: '))}`)
+  const num_montadoras = montadoras.length
+
+  if(num_montadoras === 0){
+    print(texto_vermelho('\n  Nenhuma montadora cadastrada!!'))
+    return
+  }
+
+  print(`\n\t  ${fundo_branco(('\n\t\t Montadoras: '))}`)
 
   for ( let montadora of montadoras ){
     print(`
@@ -46,20 +86,22 @@ ___________________________________________
   Id......: ${montadora['id']}
   Nome....: ${montadora['nome']}
   Pais....: ${montadora['pais']}
-  Ano.....: ${montadora['ano']}`)
+  Ano.....: ${montadora['ano']} `)
+
   } 
 
   print('___________________________________________')
+
+  limpar_tela()
 }
 
 export function salvar_dados(montadoras){
   const menu_salvar = `
-  +----------------+  
-  |  Salvar dados? |
-  |  1 - Sim       |
-  |  2 - Não       |
-  +----------------+ `
-
+  + ——————————————— +
+  │  Salvar dados?  │
+  │    1 - Sim      │
+  │    2 - Não      │ 
+  + ——————————————— + `
   let opcao = menu(menu_salvar)
 
   switch (opcao) {
@@ -77,67 +119,68 @@ export function salvar_dados(montadoras){
 
       fs.writeFileSync('montadoras.txt', dados)
 
-      print(chalk.green('\n  Atualizações salvas com sucesso!!'))
+      print(texto_verde('\n  Atualizações salvas com sucesso!!'))
       break;
 
     case 2:
-      print(chalk.redBright('\n  As alterções não foram salvas!!'))
+      print(texto_vermelho('\n  As alterções não foram salvas!!'))
       break;
   
     default:
-      print(chalk.redBright('  Escolha uma opção válida!!'))
+      print(texto_vermelho('  Escolha uma opção válida!!'))
       salvar_dados(montadoras)
       break;
   }
 
-  
+  limpar_tela()
 }
 
 export function atualizar_montadora(montadoras) {
-  let opcao = menu(listar_montadoras(montadoras))
+  let opcao = menu(listar_montadoras(montadoras, 'Atualizar montadora:'))
   
-  while ( opcao < 0 || opcao > montadoras.length - 1 ){
-    print(chalk.redBright('  Opção inválida!!'))
+  while ( opcao < 0 || opcao > montadoras.length ){
+    print(texto_vermelho('  Opção inválida!!'))
   
     limpar_tela()
 
-    opcao = menu(listar_montadoras(montadoras))
+    opcao = menu(listar_montadoras(montadoras, 'Atualizar montadora:'))
   } 
 
-  const montadora = montadoras[opcao]
+  if (opcao === 0){
+    return
+  } 
+
+  const montadora = montadoras[opcao-1]
 
   montadora['nome'] = input_str_tam_minimo('  Nome: ') || montadora['nome']  
   montadora['pais'] = input_str_tam_minimo('  Pais: ') || montadora['pais']
-  montadora['ano'] = input_num('  Ano: ') || montadora['ano']
+  montadora['ano'] = Number(input_str_tam_minimo('  Ano: ')) || montadora['ano']
   
-  print(chalk.green('  Montadora atualizada com sucesso!!'))
-}
+  print(texto_verde('  Montadora atualizada com sucesso!!'))
 
-export function listar_montadoras(montadoras) {
-  console.clear()
+  salvar_dados(montadoras)
 
-  let menu_montadoras = `
-  ${chalk.bgWhiteBright.black('Selecione uma montadora:')}`
-
-  for ( let i = 0; i < montadoras.length; i++ ){
-    menu_montadoras += ` ${i} - ${montadoras[i]['nome']}\n`
-
-  }
-
-  return menu_montadoras
 }
 
 export function remover_montadora(montadoras) {
   
-  let opcao = menu(listar_montadoras(montadoras))
+  let opcao = menu(listar_montadoras(montadoras, 'Remover montadora:'))
 
   while ( opcao < 0 || opcao > montadoras.length ){
-    print(chalk.redBright('  Opção inválida!!'))
+    print(texto_vermelho('  Opção inválida!!'))
 
     limpar_tela()
     
-    opcao = menu(listar_montadoras(montadoras))
+    opcao = menu(listar_montadoras(montadoras, 'Remover montadora:'))
   } 
 
-  del(montadoras, opcao)
+  if (opcao === 0){
+    return
+  } 
+  
+  del(montadoras, opcao-1)
+
+  print(texto_verde('\n  Montadora removida com sucesso!!'))
+
+  salvar_dados(montadoras)
 }

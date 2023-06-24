@@ -1,5 +1,6 @@
 import { input_secreto, print } from "../io_utils_.js";
 import { readFileSync } from "fs";
+import chalk from "chalk";
 
 
 export function limpar_tela() {
@@ -17,4 +18,20 @@ export function del(lista, index) {
   if (index >= 0 && index < lista.length) {
     lista.splice(index, 1);
   }
+}
+
+export function texto_vermelho(label) {
+  return chalk.redBright(label)
+}
+
+export function texto_verde(label) {
+  return chalk.greenBright(label)
+}
+
+export function fundo_branco(label) {
+  return chalk.bgWhiteBright.black(label)
+}
+
+export function texto_amarelo(label) {
+  return chalk.yellowBright(label)
 }

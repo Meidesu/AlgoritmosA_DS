@@ -10,6 +10,7 @@ import { input_num,
 import { del, fundo_branco, 
          import_files, 
          limpar_tela, 
+         plural_perfeito, 
          texto_amarelo, 
          texto_verde, 
          texto_vermelho } from "./patrocars_utils.js";
@@ -74,6 +75,8 @@ export function listar_itens_montadora(montadoras) {
 
   if(num_montadoras === 0){
     print(texto_vermelho('\n  Nenhuma montadora cadastrada!!'))
+
+    limpar_tela()
     return
   }
 
@@ -91,6 +94,8 @@ ___________________________________________
   } 
 
   print('___________________________________________')
+
+  print(`\n  ${plural_perfeito(montadoras.length)}`)
 
   limpar_tela()
 }

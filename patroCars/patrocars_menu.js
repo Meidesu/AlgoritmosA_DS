@@ -7,15 +7,6 @@ import { atualizar_montadora,
   remover_montadora, 
   } from "./patrocars_features.js";
 
-const opcoes_menu = 
-`${fundo_branco('\n\t\t Patro Cars ')}
-
-  1: Adicionar nova montadora;
-  2: Listar montadoras;
-  3: Atualizar montadora;
-  4: Remover montadora;
-  ${texto_amarelo('0: Voltar.')}
-  `
 
 export function menu(opcoes) {
   console.clear()
@@ -27,6 +18,16 @@ export function menu(opcoes) {
 
 export function menu_montadoras(montadoras){
   console.clear()
+
+  const opcoes_menu = 
+`${fundo_branco('\n\t\t Patro Cars ')}
+
+  1: Adicionar nova montadora;
+  2: Listar montadoras; 
+  3: Atualizar montadora;
+  4: Remover montadora;
+  ${texto_amarelo('0: Voltar.')}
+  `
 
   let opcao = menu(opcoes_menu)
 

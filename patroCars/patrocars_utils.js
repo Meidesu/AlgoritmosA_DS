@@ -4,7 +4,7 @@ import chalk from "chalk";
 
 
 export function limpar_tela() {
-  input_secreto('\n<Enter>', '')
+  input_secreto('\n <Enter>', '')
   console.clear()
 }
 
@@ -34,4 +34,12 @@ export function fundo_branco(label) {
 
 export function texto_amarelo(label) {
   return chalk.yellowBright(label)
+}
+
+export function plural_perfeito(len){
+  if ( len === 1 ){
+    return `Total: ${len} montadora cadastrada.`
+  } else {
+    return `Total: ${len} montadoras cadastradas.`
+  }
 }
